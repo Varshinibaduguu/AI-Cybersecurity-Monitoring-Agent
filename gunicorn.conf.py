@@ -1,3 +1,5 @@
+import os
+
 # Gunicorn configuration for Render deployment
 bind = "0.0.0.0:" + str(os.environ.get("PORT", 10000))
 workers = 4

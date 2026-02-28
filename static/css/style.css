@@ -1,0 +1,316 @@
+/* Additional CSS styles for Cybersecurity Dashboard */
+
+/* Custom animations */
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.5); }
+}
+
+/* Enhanced card hover effects */
+.metric-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.metric-card:hover::before {
+    animation: shine 0.5s ease-in-out;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+}
+
+/* Chart container - STRICT HEIGHT CONTROL */
+.chart-container {
+    position: relative;
+    height: 300px !important;
+    max-height: 300px !important;
+    min-height: 300px !important;
+    overflow: hidden !important;
+    box-sizing: border-box;
+}
+
+.chart-container .chart-title {
+    margin-bottom: 10px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.chart-wrapper {
+    height: 260px !important;
+    max-height: 260px !important;
+    overflow: hidden !important;
+    position: relative;
+}
+
+.chart-container canvas {
+    height: 260px !important;
+    max-height: 260px !important;
+    width: 100% !important;
+}
+
+.chart-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Table enhancements */
+.table-hover tbody tr:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+    cursor: pointer;
+}
+
+.table-hover tbody tr:hover td {
+    color: #667eea;
+}
+
+/* Alert styling */
+.alert {
+    border: none;
+    border-radius: 10px;
+    animation: slideInUp 0.3s ease;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #51cf66, #40c057);
+    color: white;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #ffd43b, #fab005);
+    color: #212529;
+}
+
+/* Form enhancements */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+/* Button enhancements */
+.btn {
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Loading spinner enhancements */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3em;
+}
+
+/* Tab enhancements */
+.nav-tabs {
+    border-bottom: 2px solid #e9ecef;
+}
+
+.nav-tabs .nav-link {
+    border-radius: 10px 10px 0 0;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+/* Result card animations */
+.result-card {
+    animation: slideInUp 0.5s ease;
+    position: relative;
+}
+
+.result-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+/* Severity badge enhancements */
+.severity-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.severity-badge::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shine 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .metric-card {
+        margin: 5px 0;
+    }
+    
+    .chart-container {
+        margin: 10px 0;
+    }
+    
+    .dashboard-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .header-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .dashboard-container {
+        background: rgba(30, 30, 30, 0.95);
+        color: #e9ecef;
+    }
+    
+    .chart-container {
+        background: #2d3748;
+        color: #e9ecef;
+    }
+    
+    .threat-table {
+        background: #2d3748;
+    }
+    
+    .table {
+        color: #e9ecef;
+    }
+    
+    .result-card {
+        background: #2d3748;
+        color: #e9ecef;
+    }
+    
+    .form-control {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e9ecef;
+    }
+    
+    .form-control:focus {
+        background: #2d3748;
+        border-color: #667eea;
+        color: #e9ecef;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a6fd8, #6a4190);
+}
+
+/* Print styles */
+@media print {
+    .dashboard-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .metric-card {
+        background: white !important;
+        color: black !important;
+        break-inside: avoid;
+    }
+    
+    .btn {
+        display: none;
+    }
+    
+    .nav-tabs {
+        display: none;
+    }
+}
